@@ -48,9 +48,10 @@ def send_sms(phone_number, message):
 # Streamlit app
 st.title("Complaint Classifier")
 
-complaint = st.text_area("Enter your complaint:")
-phone_number = st.text_input("Enter your phone number:")
-account_number = st.text_input("Enter your account number:")
+# Input fields with placeholders
+complaint = st.text_area("Enter your complaint:", placeholder="Describe your issue in detail")
+phone_number = st.text_input("Enter your phone number:", placeholder="+2547XXXXXXX")
+account_number = st.text_input("Enter your account number:", placeholder="123456789")
 
 if st.button("Classify and Send SMS"):
     if complaint and phone_number and account_number:
