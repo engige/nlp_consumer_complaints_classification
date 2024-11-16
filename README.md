@@ -72,6 +72,8 @@ The data preparation process involved comprehensive preprocessing and transforma
 
 For **data transformation**, we split the data into training and testing sets with stratified sampling to maintain class balance. The text was then vectorized using TF-IDF to represent words as weighted features, capturing term importance. Finally, MinMax scaling was applied to standardize the feature values, resulting in `X_train_scaled` and `X_test_scaled` datasets optimized for model training and evaluation.
 
+![data](images/data_understanding.png)
+
 
 ## Model Training, Evaluaton, Improvement & Selection
 
