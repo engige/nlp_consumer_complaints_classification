@@ -1,5 +1,6 @@
 # Bank Customer Complaints Classification
 
+![header](images/header.png)
 
 ## Executive Summary
 
@@ -27,6 +28,7 @@ This project uses Natural Language Processing (NLP) to automatically classify cu
 After thorough data exploration and preprocessing (handling missing values, duplicate removal, text standardization, TF-IDF transformation, and scaling), we trained various models suitable for text classification, including Multinomial Naive Bayes, SVM, Logistic Regression, Random Forest, and an ExtraTrees ensemble. We also tested a transformer model, BERT, which achieved the best results with a Macro F1-score of 0.85, Weighted F1-score of 0.89, and 89% accuracy, providing consistent performance across all categories. Macro F1 was prioritized for balanced classification, supported by Weighted F1 to account for class imbalance.
 
 **Deployment and Application:**
+![deployment](images/deployment.png)
 
 The solution, deployed with Streamlit on Hugging Face, offers a simple interface for complaint submission. Customers enter complaint text, phone number, and account number, which the BERT model categorizes in real-time. An integrated SMS notification system (via Africastalking) sends classified complaints to the relevant support team and a copy to the customer, ensuring prompt and organized handling.
 
@@ -52,6 +54,7 @@ Customers of financial institutions often face frustration and dissatisfaction w
 
 
 ## Data understanding
+![wordcloud](images/wordcloud.png)
 
 The Consumer Complaints Dataset from the Consumer Financial Protection Bureau (CFPB) offers real-world data on consumer complaints about financial products and services, making it ideal for NLP projects. This publicly accessible dataset includes detailed complaint narratives across five categories:
 
@@ -76,6 +79,8 @@ For **data transformation**, we split the data into training and testing sets wi
 
 
 ## Model Training, Evaluaton, Improvement & Selection
+![modeling](images/modeling.png)
+
 
 We trained a series of baseline models, including Multinomial Naïve Bayes, Support Vector Machine (SVM), Logistic Regression, and Random Forest, to identify the most effective method for classifying customer complaints. Model evaluation focused on classification report metrics—accuracy, precision, recall, and F1-score for each class—with a particular emphasis on **Macro F1-score** and **Weighted F1-score**. Macro F1 provided an equal-weighted average across all classes, aligning with our goal to treat each complaint category equally, while Weighted F1 accounted for class imbalance by assigning more weight to larger classes, offering a broader perspective on model performance.
 
