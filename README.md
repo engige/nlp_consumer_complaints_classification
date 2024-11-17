@@ -1,6 +1,7 @@
-# Bank Customer Complaints Classification
-
 ![header](images/header.png)
+
+# Bank Customer Complaints Classification
+**Authors:** Phase5_Group6: *Mary Musyoka, Julian Kilyungi, Tabitha Kariuki, John Kul, Norah Oluoch and Joseph Ngige.*
 
 ## Executive Summary
 
@@ -22,17 +23,9 @@ This project uses Natural Language Processing (NLP) to automatically classify cu
 - Streamline the complaint logging experience.
 - Improve bank responsiveness through faster, accurate complaint classification.
 
-
-**Model Training, Evaluation, and Selection:**
-
-After thorough data exploration and preprocessing (handling missing values, duplicate removal, text standardization, TF-IDF transformation, and scaling), we trained various models suitable for text classification, including Multinomial Naive Bayes, SVM, Logistic Regression, Random Forest, and an ExtraTrees ensemble. We also tested a transformer model, BERT, which achieved the best results with a Macro F1-score of 0.85, Weighted F1-score of 0.89, and 89% accuracy, providing consistent performance across all categories. Macro F1 was prioritized for balanced classification, supported by Weighted F1 to account for class imbalance.
-
-**Deployment and Application:**
-![deployment](images/deployment.png)
+After thorough data exploration and preprocessing (handling missing values, duplicate removal, text standardization, TF-IDF transformation, and scaling), we trained various models suitable for text classification, including Multinomial Naive Bayes, SVM, Logistic Regression, Random Forest, and an ExtraTrees ensemble. We also tested a transformer model, BERT, which achieved robust results with a Macro F1-score of 0.85, Weighted F1-score of 0.89, and 89% accuracy, providing consistent performance across all categories. Macro F1 was prioritized for balanced classification, supported by Weighted F1 to account for class imbalance.
 
 The solution, deployed with Streamlit on Hugging Face, offers a simple interface for complaint submission. Customers enter complaint text, phone number, and account number, which the BERT model categorizes in real-time. An integrated SMS notification system (via Africastalking) sends classified complaints to the relevant support team and a copy to the customer, ensuring prompt and organized handling.
-
-**Limitations and Future Work:**
 
 The BERT model performs well overall, but accuracy varies by complaint type, indicating a need for further tuning. SMS delivery is currently limited to Airtel and Telkom due to restrictions on Safaricom networks, and email notifications are slow. Future enhancements include implementing a feedback loop for continuous model improvement, expanding notification channels, and optimizing for specific complaint types to improve system reliability and adaptability.
 
@@ -54,17 +47,16 @@ Customers of financial institutions often face frustration and dissatisfaction w
 
 
 ## Data understanding
-![wordcloud](images/wordcloud.png)
 
 The Consumer Complaints Dataset from the Consumer Financial Protection Bureau (CFPB) offers real-world data on consumer complaints about financial products and services, making it ideal for NLP projects. This publicly accessible dataset includes detailed complaint narratives across five categories:
 
 - Credit Reporting
 - Debt Collection
-- Mortgages and Loans (e.g., car, payday, student loans)
+- Mortgages and Loans 
 - Credit Cards
-- Retail Banking (e.g., checking/savings accounts, money transfers)
+- Retail Banking 
 
-The version used, sourced from Kaggle, contains approximately 162,400 records with varying narrative lengths. While categorized, the data is imbalanced, with 56% focused on credit reporting, posing a challenge for balanced model training. Tailored strategies are essential to ensure accurate classification across all complaint types.
+The version used, sourced from [Kaggle](https://www.kaggle.com/datasets/shashwatwork/consume-complaints-dataset-fo-nlp), contains approximately 162,400 records with varying narrative lengths. While categorized, the data is imbalanced, with 56% focused on credit reporting, posing a challenge for balanced model training. Tailored strategies are essential to ensure accurate classification across all complaint types.
 
 
 ## Data Exploration & Preparation
@@ -73,19 +65,22 @@ The initial data examination involved removing unnecessary columns and handling 
 
 The data preparation process involved comprehensive preprocessing and transformation steps to ensure clean, consistent, and usable data for modeling. During **data preprocessing**, text was standardized by converting it to lowercase, removing special characters and numbers, and handling whitespace. Tokenization split the text into individual words, while stop word removal filtered out common but uninformative words. Lemmatization reduced words to their root forms, enhancing the model’s ability to recognize related terms as a single concept. This preprocessing pipeline produced a well-processed `cleaned_narrative` column, ready for numerical feature extraction.
 
-For **data transformation**, we split the data into training and testing sets with stratified sampling to maintain class balance. The text was then vectorized using TF-IDF to represent words as weighted features, capturing term importance. Finally, MinMax scaling was applied to standardize the feature values, resulting in `X_train_scaled` and `X_test_scaled` datasets optimized for model training and evaluation.
+For **data transformation**, we split the data into training and testing sets with stratified sampling to maintain class balance. The text was then vectorized using TF-IDF to represent words as weighted features, capturing term importance. Finally, MinMax scaling was applied to standardize the feature values, resulting in a train and test datasets optimized for model training and evaluation.
 
 ![data](images/data_understanding.png)
+*Left: The distribution of Complaint Categories shows a class imbalance, with the credit_reporting category significantly more represented than others. Right: The histogram indicates a right-skewed distribution, with most narratives having fewer than 1,000 characters.*
 
+![wordcloud](images/wordcloud.png)
+*Each word cloud highlights specific terms associated with common issues for each product, showing that customer complaints are centered around distinct themes based on the product type.*
 
 ## Model Training, Evaluaton, Improvement & Selection
+
+We trained a series of baseline models, including Multinomial Naïve Bayes, Support Vector Machine (SVM), Logistic Regression, and Random Forest, to identify the most effective method for classifying customer complaints. Model evaluation was based on classification report metrics—accuracy, precision, recall, and F1-score for each class—with a particular emphasis on **Macro F1-score** and **Weighted F1-score**. Macro F1 provided an equal-weighted average across all classes, aligning with our goal to treat each complaint category equally, while Weighted F1 accounted for class imbalance by assigning more weight to larger classes, offering a broader perspective on model performance.
+
+For Model Improvement, we started by tuning the Random Forest model to enhance performance through parameter adjustments. We then applied SMOTE to balance the dataset and trained both a Random Forest and an ensemble ExtraTrees model on the resampled data, comparing their results with the tuned model. Finally, we explored a transformer-based model, **BERT**, which showed strong suitability for text classification tasks due to its deep language understanding. After evaluating performance across all metrics, we selected BERT as the most suitable model for deployment since it achieved robust accuracy and balanced performance across all complaint categories and for its appropriateness in natural language processing tasks.
+
 ![modeling](images/modeling.png)
-
-
-We trained a series of baseline models, including Multinomial Naïve Bayes, Support Vector Machine (SVM), Logistic Regression, and Random Forest, to identify the most effective method for classifying customer complaints. Model evaluation focused on classification report metrics—accuracy, precision, recall, and F1-score for each class—with a particular emphasis on **Macro F1-score** and **Weighted F1-score**. Macro F1 provided an equal-weighted average across all classes, aligning with our goal to treat each complaint category equally, while Weighted F1 accounted for class imbalance by assigning more weight to larger classes, offering a broader perspective on model performance.
-
-For Model Improvement, we started by tuning the Random Forest model to enhance performance through parameter adjustments. We then applied SMOTE to balance the dataset and retrained both a Random Forest and an ensemble ExtraTrees model on the resampled data, comparing their results with the tuned model. Finally, we explored a transformer-based model, **BERT**, which showed strong suitability for text classification tasks due to its deep language understanding. After evaluating performance across all metrics, we selected BERT as the most suitable model for deployment since it achieved robust accuracy and balanced performance across all complaint categories and for its appropriateness in natural language processing tasks.
-
+*Left: The confusion matrix reflects good differentiation across categories, with relatively few off-diagonal errors. Right: The AUC-ROC curve for the BERT model demonstrates high discriminative power across all complaint categories, with AUC values ranging from 0.92 to 0.98.*
 
 ## Deployment and Application
 
@@ -107,6 +102,8 @@ To achieve the project goal of simplifying the customer complaint process, we de
 
 This deployment provides an efficient, user-focused platform for automatic complaint classification, reducing customer frustration and improving response times. The BERT model's strong language processing capabilities ensure accurate classifications, making this solution a responsive and effective complaint management tool.
 
+![deployment](images/deployment.png)
+*Above is a snapshot of the system user interface that includes only three fields for complaint, phone number and account number.*
 
 ## Conclusion and Recommendations
 
@@ -117,3 +114,20 @@ This deployment meets project objectives by streamlining the complaint submissio
 
 **Limitations and Future Work**:  
 While BERT performs well overall, its accuracy may vary across complaint types, suggesting a need for further tuning or data augmentation. Currently, SMS notifications are limited to Airtel and Telkom networks due to restrictions with Safaricom, and email was too slow. Future improvements include implementing a feedback loop for continuous retraining, expanding notification options, and optimizing model performance for specific categories. These enhancements would strengthen the solution’s reliability and responsiveness, adapting to evolving customer needs.
+
+## For More Information
+
+See the full analysis in the [Jupyter Notebook](./index.ipynb) or review this [Presentation](./presentation.pdf).
+
+## Repository Structure
+
+```
+├── README.md                                                 <- Top-level README for reviewers of this project
+├── index.ipynb                                               <- Narrative documentation of analysis in Jupyter notebook
+├── presentation.pdf                                          <- PDF version of project presentation
+├── notebook.pdf                                              <- PDF version of the index.ipynb
+├── github.pdf                                                <- The github repository pdf
+├── data_comp.zip                                                 <- Folder containing the consumer text data
+├── notebooks                                                 <- Folder containing group members jupyter notebooks
+└── images                                                    <- Generated from code
+```
