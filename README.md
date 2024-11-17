@@ -80,7 +80,7 @@ We trained a series of baseline models, including Multinomial Naïve Bayes, Supp
 For Model Improvement, we started by tuning the Random Forest model to enhance performance through parameter adjustments. We then applied SMOTE to balance the dataset and trained both a Random Forest and an ensemble ExtraTrees model on the resampled data, comparing their results with the tuned model. Finally, we explored a transformer-based model, **BERT**, which showed strong suitability for text classification tasks due to its deep language understanding. After evaluating performance across all metrics, we selected BERT as the most suitable model for deployment since it achieved robust accuracy and balanced performance across all complaint categories and for its appropriateness in natural language processing tasks.
 
 ![modeling](images/modeling.png)
-*Left: The confusion matrix reflects good differentiation across categories, with relatively few off-diagonal errors. Right: The AUC-ROC curve for the BERT model demonstrates high discriminative power across all complaint categories, with AUC values ranging from 0.92 to 0.98.*
+*Left: The BERT confusion matrix reflects good differentiation across categories, with relatively few off-diagonal errors. Right: The AUC-ROC curve for the BERT model demonstrates high discriminative power across all complaint categories, with AUC values ranging from 0.92 to 0.98.*
 
 ## Deployment and Application
 
