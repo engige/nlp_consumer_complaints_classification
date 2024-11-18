@@ -59,7 +59,7 @@ The Consumer Complaints Dataset from the Consumer Financial Protection Bureau (C
 The version used, sourced from [Kaggle](https://www.kaggle.com/datasets/shashwatwork/consume-complaints-dataset-fo-nlp), contains approximately 162,400 records with varying narrative lengths. While categorized, the data is imbalanced, with 56% focused on credit reporting, posing a challenge for balanced model training. Tailored strategies are essential to ensure accurate classification across all complaint types.
 
 
-## Data Exploration & Preparation
+## Data Exploration and Preparation
 
 The initial data examination involved removing unnecessary columns and handling missing values in the narrative field. We identified 37,735 duplicate entries but retained them, as removing duplicates negatively impacted model performance. Class distribution analysis revealed a notable imbalance, especially in the credit reporting category, which was addressed through stratified splits and later through Synthetic Minority Over-sampling Technique (SMOTE). A text length analysis showed a right-skewed distribution, with most narratives under 1,000 characters, aligning with typical complaint lengths.
 
@@ -117,7 +117,7 @@ While BERT performs well overall, its accuracy may vary across complaint types, 
 
 ## For More Information
 
-See the full analysis in the [Jupyter Notebook](./index.ipynb) or review this [Presentation](./presentation.pdf).
+See the full analysis in the [Jupyter Notebook](./index_colab.ipynb) or review this [Presentation](./presentation.pdf).
 
 ## Repository Structure
 
