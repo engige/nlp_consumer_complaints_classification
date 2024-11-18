@@ -125,7 +125,7 @@ See the full analysis in the [Jupyter Notebook](./index_colab.ipynb) or review t
 ├── README.md                                                 <- Top-level README for reviewers of this project
 ├── index.ipynb                                               <- Narrative documentation of analysis in Jupyter notebook
 ├── presentation.pdf                                          <- PDF version of project presentation
-├── notebook.pdf                                              <- PDF version of the index.ipynb
+├── notebook.pdf                                              <- PDF version of the index_colab.ipynb
 ├── github.pdf                                                <- The github repository pdf
 ├── data_comp.zip                                             <- Folder containing the consumer text data
 ├── notebooks                                                 <- Folder containing group members jupyter notebooks
