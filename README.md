@@ -127,7 +127,7 @@ See the full analysis in the [Jupyter Notebook](./index_colab.ipynb) or review t
 ├── presentation.pdf                                          <- PDF version of project presentation
 ├── notebook.pdf                                              <- PDF version of the index.ipynb
 ├── github.pdf                                                <- The github repository pdf
-├── data_comp.zip                                                 <- Folder containing the consumer text data
+├── data_comp.zip                                             <- Folder containing the consumer text data
 ├── notebooks                                                 <- Folder containing group members jupyter notebooks
 └── images                                                    <- Generated from code
 ```
