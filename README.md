@@ -92,7 +92,7 @@ To achieve the project goal of simplifying the customer complaint process, we de
 
 3. **Automated Notification System**: Integrated with Africastalking’s SMS API, the system sends categorized complaints directly to the designated support team phone numbers, and provides the customer with a copy of their complaint via SMS. SMS was chosen over email due to email latency issues.
 
-4. **Deployment on Hugging Face**: The model and Streamlit app were deployed on Hugging Face, accessible via a link, allowing customers to submit complaints quickly without navigating complex options.
+4. **Deployment on Hugging Face**: The model and Streamlit app were deployed on Hugging Face, accessible via a [link](https://huggingface.co/spaces/Tennessy/Complaints_Classiffers), allowing customers to submit complaints quickly without navigating complex options.
 
 5. **Continuous Improvement**: While not implemented initially, a feedback loop is recommended to retrain the model with new complaint data, enhancing accuracy and adaptability over time.
 
