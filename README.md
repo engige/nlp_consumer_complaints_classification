@@ -117,7 +117,7 @@ While BERT performs well overall, its accuracy may vary across complaint types, 
 
 ## For More Information
 
-See the full analysis in the [Jupyter Notebook](./index_colab.ipynb) or review this [Presentation](./presentation.pdf).
+See the full analysis in the [Jupyter Notebook](./index_colab.ipynb) or review this [Presentation](./presentation_final.pdf).
 
 ## Repository Structure
 
